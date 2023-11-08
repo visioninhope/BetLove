@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "ES6", // Choose your target ECMAScript version
+    "module": "CommonJS", // Choose your module system
+    "outDir": "./dist", // Specify the output directory for compiled files
+    "rootDir": "./" // Specify the source directory where your TypeScript files are located
+  }
+}
