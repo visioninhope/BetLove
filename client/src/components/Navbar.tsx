@@ -6,34 +6,10 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="navCont">
-        <div className="top">
-          <div className="navLogo">
-            <img src="https://i.ibb.co/nMD7gp1/Bet-Love-Logo.png" alt="logo" />
-          </div>
-          <div className="right">
-            <div className="balance">
-              <p>GHS 39.25</p>
-            </div>
-            <div className="openBets">
-              <Badge badgeContent={4} color="primary">
-                Open Bets
-              </Badge>
-            </div>
-            <div className="account">
-              <div className="imgCont">
-                <img
-                  src="https://i.ibb.co/dGcxdHw/intern-img-jg.png"
-                  alt="profile"
-                />
-              </div>
-              {/* <div className="textCont">
-                <p>Cyklone Hateka</p>
-                <span>actions</span>
-              </div> */}
-            </div>
-          </div>
+        <div className="navLogo">
+          <img src="https://i.ibb.co/nMD7gp1/Bet-Love-Logo.png" alt="logo" />
         </div>
-        <div className="bottom">
+        <div className="center">
           <ul>
             <li>
               <Link to="/sport">Sports</Link>
@@ -48,6 +24,28 @@ const Navbar = () => {
               <Link to="/promotions">Promotions</Link>
             </li>
           </ul>
+        </div>
+        <div className="right">
+          <div className="balance">
+            <p>GHS 39.25</p>
+          </div>
+          <div className="openBets">
+            <Badge badgeContent={4} color="primary">
+              Open Bets
+            </Badge>
+          </div>
+          <div className="account">
+            <div className="imgCont">
+              <img
+                src="https://i.ibb.co/dGcxdHw/intern-img-jg.png"
+                alt="profile"
+              />
+            </div>
+            {/* <div className="textCont">
+                <p>Cyklone Hateka</p>
+                <span>actions</span>
+              </div> */}
+          </div>
         </div>
       </div>
     </div>
