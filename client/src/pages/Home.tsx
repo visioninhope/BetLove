@@ -1,3 +1,4 @@
+import LiveTrendingMatch from "../components/LiveTrendingMatch";
 import Navbar from "../components/Navbar";
 import SideMenu from "../components/SideMenu";
 import "../styles/pages/home.css";
@@ -8,8 +9,10 @@ const Home = () => {
       <SideMenu />
       <div className="homeCont">
         <Navbar />
-        <div className="homContent">
-          <div className="left"></div>
+        <div className="homeContent">
+          <div className="left">
+            <LiveTrendingMatch />
+          </div>
           <div className="center"></div>
           <div className="right"></div>
         </div>
