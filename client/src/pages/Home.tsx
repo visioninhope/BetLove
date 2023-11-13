@@ -1,3 +1,5 @@
+import Hero from "../components/Hero";
+import Leagues from "../components/Leagues";
 import LiveTrendingMatch from "../components/LiveTrendingMatch";
 import Navbar from "../components/Navbar";
 import SideMenu from "../components/SideMenu";
@@ -12,8 +14,11 @@ const Home = () => {
         <div className="homeContent">
           <div className="left">
             <LiveTrendingMatch />
+            <Leagues />
           </div>
-          <div className="center"></div>
+          <div className="center">
+            <Hero />
+          </div>
           <div className="right"></div>
         </div>
       </div>

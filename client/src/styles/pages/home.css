@@ -33,4 +33,11 @@
     /* border: 1px solid red; */
     position: fixed;
     padding: 0;
+    /* overflow-y: scroll; */
+}
+
+.home>.homeCont>.homeContent>.center {
+    width: 60%;
+    position: relative;
+    left: 18%;
 }
