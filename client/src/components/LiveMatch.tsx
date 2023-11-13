@@ -1,21 +1,24 @@
 import "../styles/components/liveMatch.css";
 const LiveMatch = () => {
   return (
-    <div className="liveMatcheComponent">
+    <div className="liveMatchComponent">
       <div className="lmcCont">
         <button>Live</button>
         <div className="teams">
           <div className="left">
-            <img src="./photos/realmadrid.png" alt="" />
+            <img src="./photos/chelsea.png" alt="" />
           </div>
           <h4>vs</h4>
           <div className="right">
-            <img src="./photos/realmadrid.png" alt="" />
+            <img src="./photos/manUnited.png" alt="" />
           </div>
         </div>
-        <h5>57'</h5>
-        <div className="progressBar"></div>
-        <div className="sportsLeague"></div>
+        <h5>2nd Half 57'</h5>
+        <div className="progressBar">
+          <div className="progress"></div>
+          <div className="unshaded"></div>
+        </div>
+        <p>Football/English Premier League</p>
         <div className="nameScores">
           <div className="top">
             <p>Chelsea</p>
@@ -27,7 +30,7 @@ const LiveMatch = () => {
           </div>
         </div>
         <div className="odds">
-          <div className="home">
+          <div className="homeOdd">
             <span>1</span>
             <p>2.74</p>
           </div>
@@ -35,7 +38,7 @@ const LiveMatch = () => {
             <span>X</span>
             <p>2.3</p>
           </div>
-          <div className="away">
+          <div className="awayOdd">
             <span>2</span>
             <p>2.34</p>
           </div>

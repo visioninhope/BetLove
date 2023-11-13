@@ -44,4 +44,9 @@
 
 .home>.homeCont>.homeContent>.center>.liveMatchesParent {
     display: flex;
+    justify-content: space-between;
+}
+
+.home>.homeCont>.homeContent>.center>.liveMatchesParent>div {
+    width: 33%;
 }

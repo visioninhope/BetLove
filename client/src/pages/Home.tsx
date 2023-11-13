@@ -22,7 +22,15 @@ const Home = () => {
             <Hero />
             <Label />
             <div className="liveMatchesParent">
-              <LiveMatch />
+              <div className="left">
+                <LiveMatch />
+              </div>
+              <div className="center">
+                <LiveMatch />
+              </div>
+              <div className="right">
+                <LiveMatch />
+              </div>
             </div>
           </div>
           <div className="right"></div>
