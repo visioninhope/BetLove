@@ -41,3 +41,7 @@
     position: relative;
     left: 18%;
 }
+
+.home>.homeCont>.homeContent>.center>.liveMatchesParent {
+    display: flex;
+}

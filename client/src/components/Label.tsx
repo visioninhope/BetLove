@@ -1,3 +1,4 @@
+import "../styles/components/label.css";
 const Label = () => {
   return (
     <div className="label">

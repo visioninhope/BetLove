@@ -1,5 +1,7 @@
 import Hero from "../components/Hero";
+import Label from "../components/Label";
 import Leagues from "../components/Leagues";
+import LiveMatch from "../components/LiveMatch";
 import LiveTrendingMatch from "../components/LiveTrendingMatch";
 import Navbar from "../components/Navbar";
 import SideMenu from "../components/SideMenu";
@@ -18,6 +20,10 @@ const Home = () => {
           </div>
           <div className="center">
             <Hero />
+            <Label />
+            <div className="liveMatchesParent">
+              <LiveMatch />
+            </div>
           </div>
           <div className="right"></div>
         </div>
