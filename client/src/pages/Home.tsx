@@ -1,3 +1,4 @@
+import AllFootball from "../components/AllFootballBet";
 import Hero from "../components/Hero";
 import Label from "../components/Label";
 import Leagues from "../components/Leagues";
@@ -32,6 +33,8 @@ const Home = () => {
                 <LiveMatch />
               </div>
             </div>
+            <Label />
+            <AllFootball />
           </div>
           <div className="right"></div>
         </div>

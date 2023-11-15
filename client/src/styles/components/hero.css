@@ -1,6 +1,6 @@
 .hero {
     width: 100%;
-    height: 34vh;
+    height: 31vh;
     /* border: 1px solid red; */
     border-radius: 10px;
 }
@@ -29,7 +29,7 @@
 
 .hero>.heroCont>.sliderCont>.left>.sliderTrack {
     display: flex;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 
 .hero>.heroCont>.sliderCont>.left>.sliderTrack>span {
@@ -87,6 +87,6 @@
 
 .hero>.heroCont>.sliderCont>.right>img {
     position: relative;
-    width: 55%;
-    bottom: 24px;
+    width: 50%;
+    bottom: 22px;
 }

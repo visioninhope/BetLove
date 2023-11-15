@@ -49,3 +49,55 @@ export const top5leagues: League[] = [
     className: "bundesliga",
   },
 ];
+
+interface FootballBets {
+  date: string;
+  time: string;
+  homeTeamName: string;
+  homeTeamBadge: string;
+  homeTeamOdd: number;
+  draw: number;
+  awayTeamName: string;
+  awayTeamBadge: string;
+  awayTeamOdd: number;
+  markets: string;
+}
+
+export const footballBets: FootballBets[] = [
+  {
+    date: "today",
+    time: "10:00",
+    homeTeamName: "Manchester City",
+    homeTeamBadge: "manCity",
+    homeTeamOdd: 1.78,
+    draw: 3.44,
+    awayTeamName: "Liverpool",
+    awayTeamBadge: "liverpool",
+    awayTeamOdd: 3.5,
+    markets: "+120",
+  },
+  {
+    date: "today",
+    time: "10:00",
+    homeTeamName: "Arsenal",
+    homeTeamBadge: "arsenal",
+    homeTeamOdd: 1.9,
+    draw: 4.65,
+    awayTeamName: "Wolves",
+    awayTeamBadge: "wolves",
+    awayTeamOdd: 5.43,
+    markets: "+120",
+  },
+  {
+    date: "today",
+    time: "11:30",
+    homeTeamName: "AS Roma",
+    homeTeamBadge: "roma",
+    homeTeamOdd: 2.1,
+    draw: 2.7,
+    awayTeamName: "Lazio",
+    awayTeamBadge: "lazio",
+    awayTeamOdd: 2.3,
+    markets: "+80",
+  },
+];
