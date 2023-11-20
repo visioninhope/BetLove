@@ -4,52 +4,58 @@ import { NextFunction, Request, Response } from "express";
 import AuthService from "../services/AuthService";
 import { SendEmail } from "../emails/sendEmail";
 import jwt from "jsonwebtoken";
+import GenerateToken from "../services/GenerateToken";
 
 export class Register {
-  req: Request;
-  res: Response;
-  next: NextFunction;
+  public async register(req: Request, res: Response, next: NextFunction) {
+    const { name, email, password, mobileNumber, country, dob } = req.body;
 
-  constructor(req: Request, res: Response, next: NextFunction) {
-    this.req = req;
-    this.res = res;
-    this.next = next;
-  }
-  public async register() {
-    const { name, email, password, mobileNumber, country, dateOfBirth } =
-      this.req.body;
     try {
       const hashedPassword = AuthService.hashPassword(password);
       let user = await UserSchema.findOne({ email }, { maxTimeMS: 30000 });
-      if (user) return this.next(errorHandler(401, "Email already used"));
+      if (user) return next(errorHandler(401, "Email already used"));
       user = new UserSchema({
-        ...this.req.body,
+        ...req.body,
         password: hashedPassword,
       });
       await user.save();
+
       interface jwtOptions {
         user_id: unknown;
         email: string;
       }
 
-      const confirmToken: jwtOptions = {
-        user_id: user._id,
-        email: user.email,
-      };
+      const token = new GenerateToken(
+        process.env.JWT_CONFIRM_ACCOUNT_KEY,
+        "1h"
+      );
 
-      const JWT_ACCOUNT_CONFIRM_SEC: string | undefined =
-        process.env.JWT_CONFIRM_ACCOUNT_KEY;
+      const actualToken = token.token();
 
-      const token = jwt.sign(confirmToken, JWT_ACCOUNT_CONFIRM_SEC || "", {
-        expiresIn: "1h",
-      });
       const url: string = `http://localhost:8000/api/auth/verifyemail/user/${user._id}/verify/${token}`;
-      const sendMail = new SendEmail(user.email, "Account confirmation", url);
+      const sendMail = new SendEmail(user.email, "Account confirmation", {
+        url,
+        token: actualToken,
+      });
+      console.log("good");
+      const emailResponse = await sendMail
+        .sendMail()
+        .then((data) => {})
+        .catch((error) => {
+          return next(errorHandler(400, error.message));
+        });
+      res
+        .status(200)
+        .json(
+          "Please click on the link in the email sent to you to confirm your account"
+        );
     } catch (error) {
-      return this.next(errorHandler);
+      return next(errorHandler);
     }
   }
 }
+
+export class ConfirmAccount {}
 
 export class Login {
   public async login(req: Request, res: Response, next: NextFunction) {}

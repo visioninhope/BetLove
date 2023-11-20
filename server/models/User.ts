@@ -24,8 +24,8 @@ const UserSchema: Schema = new Schema({
     type: String,
     required: true,
   },
-  dateOfBirth: {
-    type: Date,
+  dob: {
+    type: String,
     required: true,
   },
 });

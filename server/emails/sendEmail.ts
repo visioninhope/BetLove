@@ -2,11 +2,12 @@ import nodemailer, { SendMailOptions } from "nodemailer";
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
+  service: "gmail",
   port: 465,
   secure: true,
   auth: {
-    user: process.env.NODEMAILER_EMAIL_SENDER,
-    pass: process.env.GMAIL_APP_PASSWORD,
+    user: "cyklonehateka1@gmail.com",
+    pass: "copl qbdl bgcp brpd",
   },
 });
 interface ViewEngineOptions {
@@ -29,22 +30,30 @@ const options: Options = {
 interface AddTemplateOption extends SendMailOptions {
   template: string;
   context: {
-    token: String;
+    token: string;
   };
+}
+
+interface Context {
+  token: string;
+  url: string;
 }
 
 export class SendEmail {
   receiver: string;
   subject: string;
-  text: string;
+  context: {
+    token: string;
+    url: string;
+  };
 
-  constructor(receiver: string, subject: string, text: string) {
-    this.text = text;
+  constructor(receiver: string, subject: string, context: Context) {
+    this.context = context;
     this.receiver = receiver;
     this.subject = subject;
   }
 
-  public async sendMail() {
+  public async sendMail(): Promise<unknown> {
     try {
       const info = await new Promise((resolve: any, reject: any) => {
         const emailOptions: AddTemplateOption = {
@@ -53,7 +62,7 @@ export class SendEmail {
           template: "verifyEmailTemplate",
           subject: this.subject,
           context: {
-            token: this.text,
+            token: this.context.token,
           },
         };
         // Send the email
@@ -61,6 +70,7 @@ export class SendEmail {
           if (err) {
             console.error(err);
             reject(err);
+            return;
           } else {
             console.log(info);
             resolve(info);
