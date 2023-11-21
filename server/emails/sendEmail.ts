@@ -10,45 +10,23 @@ const transporter = nodemailer.createTransport({
     pass: "copl qbdl bgcp brpd",
   },
 });
-interface ViewEngineOptions {
-  extName: string;
-}
-interface Options {
-  viewEngine: ViewEngineOptions;
-  viewPath: string;
-  extName: string;
-}
 
-const options: Options = {
-  viewEngine: {
-    extName: ".handlebars",
-  },
-  viewPath: "./views",
-  extName: ".handlebars",
-};
+console.log("");
 
-interface AddTemplateOption extends SendMailOptions {
-  template: string;
-  context: {
-    token: string;
-  };
-}
-
-interface Context {
-  token: string;
-  url: string;
+interface MessageConfig {
+  from: string | undefined;
+  to: string;
+  subject: string;
+  html: string;
 }
 
 export class SendEmail {
   receiver: string;
   subject: string;
-  context: {
-    token: string;
-    url: string;
-  };
+  html: string;
 
-  constructor(receiver: string, subject: string, context: Context) {
-    this.context = context;
+  constructor(receiver: string, subject: string, html: string) {
+    this.html = html;
     this.receiver = receiver;
     this.subject = subject;
   }
@@ -56,14 +34,11 @@ export class SendEmail {
   public async sendMail(): Promise<unknown> {
     try {
       const info = await new Promise((resolve: any, reject: any) => {
-        const emailOptions: AddTemplateOption = {
+        const emailOptions: MessageConfig = {
           from: process.env.NODEMAILER_EMAIL_SENDER,
           to: this.receiver,
-          template: "verifyEmailTemplate",
           subject: this.subject,
-          context: {
-            token: this.context.token,
-          },
+          html: this.html,
         };
         // Send the email
         transporter.sendMail(emailOptions, (err, info) => {

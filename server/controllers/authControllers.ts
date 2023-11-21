@@ -5,7 +5,7 @@ import AuthService from "../services/AuthService";
 import { SendEmail } from "../emails/sendEmail";
 import jwt from "jsonwebtoken";
 import GenerateToken from "../services/GenerateToken";
-
+import verifyEmail from "../views/verifyEmailTemplate";
 export class Register {
   public async register(req: Request, res: Response, next: NextFunction) {
     const { name, email, password, mobileNumber, country, dob } = req.body;
@@ -32,12 +32,9 @@ export class Register {
 
       const actualToken = token.token();
 
-      const url: string = `http://localhost:8000/api/auth/verifyemail/user/${user._id}/verify/${token}`;
-      const sendMail = new SendEmail(user.email, "Account confirmation", {
-        url,
-        token: actualToken,
-      });
-      console.log("good");
+      const url: string = `http://localhost:8000/api/auth/verifyemail/user/${user._id}/verify/${actualToken}`;
+      const html = verifyEmail(user.name, url);
+      const sendMail = new SendEmail(user.email, "Account confirmation", html);
       const emailResponse = await sendMail
         .sendMail()
         .then((data) => {})

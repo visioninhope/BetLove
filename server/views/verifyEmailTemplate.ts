@@ -1,8 +1,9 @@
-<html lang="en">
+const verifyEmail = (name: string, link: string): string => {
+  return `<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Confirm Your Account - BettingSite</title>
+    <title>Confirm Your Account - BetLove</title>
     <style>
       body { font-family: 'Arial', sans-serif; line-height: 1.6; margin: 0;
       padding: 0; background-color: #f4f4f4; } .container { max-width: 600px;
@@ -15,17 +16,20 @@
   </head>
   <body>
     <div class="container">
-      <h1>Welcome to BettingSite!</h1>
-      <p>Hi [User's Name],</p>
-      <p>Thank you for registering on BettingSite. To start enjoying our
+      <h1>Welcome to BetLove!</h1>
+      <p>Hi ${name},</p>
+      <p>Thank you for registering on BetLove. To start enjoying our
         services, please confirm your account by clicking the button below:</p>
-      <a href="{{token}}" class="confirmation-link">Confirm Your Account</a>
+      <a href="${link}" class="confirmation-link">Confirm Your Account</a>
       <p>If the button above does not work, you can also copy and paste the
         following link into your browser:</p>
-      <p>{{token}}</p>
-      <p>Thank you for choosing BettingSite. If you have any questions or need
+      <p>${link}</p>
+      <p>Thank you for choosing BetLove. If you have any questions or need
         assistance, feel free to contact our support team.</p>
-      <p>Best regards,<br /> The BettingSite Team</p>
+      <p>Best regards,<br /> The BetLove Team</p>
     </div>
   </body>
-</html>
+</html>`;
+};
+
+export default verifyEmail;
